@@ -1,0 +1,29 @@
+class Node:
+    def __init__(self, nama_menu, harga, Jumlah):
+        self.nama_menu = nama_menu
+        self.harga = harga
+        self.Jumlah = Jumlah
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def tambahkan_pesanan(self, nama_menu, harga, Jumlah):
+        new_node = Node(nama_menu, harga, Jumlah)
+        new_node.next = self.head
+        self.head = new_node
+
+    def menampilkan_pesanan(self):
+        current = self.head
+        while current:
+            print(f"{current.Jumlah} {current.nama_menu} - Rp{current.harga * current.Jumlah}")
+            current = current.next
+
+    def hitung_total_harga(self):
+        total_harga = 0
+        current = self.head
+        while current:
+            total_harga += current.harga * current.Jumlah
+            current = current.next
+        return total_harga
